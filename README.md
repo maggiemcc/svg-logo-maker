@@ -9,7 +9,7 @@
 - [Usage](#usage)
 - [Contributors](#contributors)
 - [Walkthrough Video & Screenshot](#walkthrough-video--screenshot)
-- [Questions](#questions)
+- [Contact](#contact)
 
 ## Description
 
@@ -92,7 +92,7 @@ git push origin feature/featureName
 Click the image below to watch a walkthrough:  
 [![Watch my How to Video](./screenshot.png)]()
 
-## Questions
+## Contact
 
-To view more of my work, visit my GitHub page: [GitHub: maggiemcc](https://github.com/maggiemcc)
+To view more of my work, visit my GitHub page: [GitHub: maggiemcc](https://github.com/maggiemcc)  
 If you have any questions, please feel free to contact me by email: maggiemccausland@hotmail.com
