@@ -1,0 +1,6 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+        <path d="M150 10 L15 190 L280 190 Z" fill="black" stroke="pink" stroke-width="4px"></path>
+        <text x="150" y="150" font-size="60" text-anchor="middle" font-family="Courier New, 'Monospace'" fill="pink">TRI</text>
+        </svg>
+        

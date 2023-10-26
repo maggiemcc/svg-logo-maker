@@ -1,0 +1,6 @@
+
+        <svg xmlns="http://www.w3.org/2000/svg" version="1.1" width="300" height="200">
+        <rect x="40" y="10" width="170" height="170" fill="black" stroke="tan" stroke-width="4px"></rect>
+        <text x="125" y="120" font-size="60" text-anchor="middle" font-family="Gill Sans, 'sans-serif'" fill="tan">TAN</text>
+        </svg>
+        

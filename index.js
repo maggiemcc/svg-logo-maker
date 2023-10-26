@@ -31,6 +31,12 @@ const questions = [
         name: 'sColor',
         message: 'Enter a color for your shape (EX: "black" or "#000")',
     },
+    {
+        type: 'list',
+        name: 'border',
+        message: 'Would you like a border on your shape?',
+        choices: ["yes", "no"],
+    },
 ];
 
 // Function to write svg file
@@ -46,8 +52,8 @@ function writeToFile(answers){
 function init(){
     inquirer.prompt(questions)
     .then((answers) => {
-        if(answers.text.length > 3){
-            console.log("Try again, text must not be greater than 3 characters.");
+        if(answers.text.length > 3 || answers.text.length <= 0){
+            console.log("Try again, text must have at least 1 character, but not be greater than 3 characters.");
             init();
         } else {
             writeToFile(answers);
