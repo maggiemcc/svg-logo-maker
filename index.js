@@ -12,7 +12,13 @@ const questions = [
     {
         type: 'input',
         name: 'tColor',
-        message: 'Enter a color for your text (EX: "cyan" or "purple")',
+        message: 'Enter a color for your text (EX: "white" or "#fff")',
+    },
+    {
+        type: 'list',
+        name: 'fontFamily',
+        message: 'What font would you like to use?',
+        choices: ["Georgia", "Gill Sans", "Arial", "Courier New", "Copperplate"],
     },
     {
         type: 'list',
@@ -23,22 +29,29 @@ const questions = [
     {
         type: 'input',
         name: 'sColor',
-        message: 'Enter a color for your shape (EX: "cyan" or "purple")',
+        message: 'Enter a color for your shape (EX: "black" or "#000")',
     },
 ];
 
 // Function to write svg file
 function writeToFile(answers){
-    const fileName = "logo.svg";
+    const fileName = `${answers.text}.svg`;
+    // const fileName = "logo.svg";
     const svgPageContent = shapes(answers);
-    fs.writeFile(`./logos-created/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    // fs.writeFile(`./user-logo/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    fs.writeFile(`./example-logos/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
 }
 
 // function to initialize app
 function init(){
     inquirer.prompt(questions)
     .then((answers) => {
-        writeToFile(answers);
+        if(answers.text.length > 3){
+            console.log("Try again, text must not be greater than 3 characters.");
+            init();
+        } else {
+            writeToFile(answers);
+        }
     });
 }
 
