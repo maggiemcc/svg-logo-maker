@@ -1,6 +1,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const shapes = require('./lib/shapes.js');
+const allShapes = require('./lib/allShapes.js');
 
 // An array of questions for user input
 const questions = [
@@ -44,6 +45,7 @@ function writeToFile(answers){
     const fileName = `${answers.text}.svg`;
     // const fileName = "logo.svg";
     const svgPageContent = shapes(answers);
+    const pageContentTest = allShapes(answers);
     // fs.writeFile(`./user-logo/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
     fs.writeFile(`./example-logos/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
 }
