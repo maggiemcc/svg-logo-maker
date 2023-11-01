@@ -16,7 +16,7 @@
 Users will be able to generate a simple logo for their projects so that they won't have to pay a graphic designer.
 
 ## License
-MIT License
+[MIT License](./LICENSE)
 
 ## Installation
 
