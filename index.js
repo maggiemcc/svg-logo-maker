@@ -1,7 +1,8 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-const shapes = require('./lib/shapes.js');
-const allShapes = require('./lib/allShapes.js');
+// const shapes = require('./lib/shapes.js');
+// const allShapes = require('./lib/allShapes.js');
+const {Triangle} = require('./lib/allShapes.js');
 
 // An array of questions for user input
 const questions = [
@@ -12,29 +13,29 @@ const questions = [
     },
     {
         type: 'input',
-        name: 'tColor',
+        name: 'textColor',
         message: 'Enter a color for your text (EX: "white" or "#fff")',
     },
     {
         type: 'list',
-        name: 'fontFamily',
+        name: 'textFont',
         message: 'What font would you like to use?',
         choices: ["Georgia", "Gill Sans", "Arial", "Courier New", "Copperplate"],
     },
     {
         type: 'list',
-        name: 'shape',
+        name: 'shapeType',
         message: 'What shape would you like for your logo?',
         choices: ["circle", "square", "triangle"],
     },
     {
         type: 'input',
-        name: 'sColor',
+        name: 'shapeColor',
         message: 'Enter a color for your shape (EX: "black" or "#000")',
     },
     {
         type: 'list',
-        name: 'border',
+        name: 'shapeBorder',
         message: 'Would you like a border on your shape?',
         choices: ["yes", "no"],
     },
@@ -42,12 +43,26 @@ const questions = [
 
 // Function to write svg file
 function writeToFile(answers){
-    const fileName = `${answers.text}.svg`;
-    // const fileName = "logo.svg";
-    const svgPageContent = shapes(answers);
-    const pageContentTest = allShapes(answers);
-    // fs.writeFile(`./user-logo/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
-    fs.writeFile(`./example-logos/${fileName}`, svgPageContent, (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    let text = answers.text;
+    let textColor = answers.textColor;
+    let textFont = answers.textFont;
+    let shapeType = answers.shapeType;
+    let shapeColor = answers.shapeColor;
+    let shapeBorder = answers.shapeBorder;
+
+    if (shapeBorder === "yes"){
+        shapeBorder = textColor;
+    } else {
+        shapeBorder = "none"
+    }
+
+    const fileName = `${text}.svg`;
+
+    // Check shape type to render/writeFile for appropriate shape
+    if(shapeType === 'triangle'){
+        const triangle = new Triangle(text, textColor, textFont, shapeColor, shapeBorder);
+        return fs.writeFile(`./user-logo/${fileName}`, triangle.render(), (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    }
 }
 
 // function to initialize app
