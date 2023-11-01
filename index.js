@@ -1,8 +1,6 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
-// const shapes = require('./lib/shapes.js');
-// const allShapes = require('./lib/allShapes.js');
-const {Triangle} = require('./lib/allShapes.js');
+const {Circle, Square, Triangle} = require('./lib/allShapes.js');
 
 // An array of questions for user input
 const questions = [
@@ -20,7 +18,7 @@ const questions = [
         type: 'list',
         name: 'textFont',
         message: 'What font would you like to use?',
-        choices: ["Georgia", "Gill Sans", "Arial", "Courier New", "Copperplate"],
+        choices: ["Gill Sans", "Arial", "Courier New", "Copperplate"],
     },
     {
         type: 'list',
@@ -50,6 +48,18 @@ function writeToFile(answers){
     let shapeColor = answers.shapeColor;
     let shapeBorder = answers.shapeBorder;
 
+    // For Font Family selection
+    if (textFont == "Gill Sans"){
+        textFont =  "Gill Sans, 'sans-serif'";
+    } else if (textFont == "Arial"){
+        textFont =  "Arial, 'sans-serif'";
+    } else if (textFont == "Courier New"){
+        textFont =  "Courier New, 'Monospace'";
+    } else if (textFont == "Copperplate"){
+        textFont = "Copperplate, 'Fantasy'";
+    };
+
+    // For border selection, display color if yes
     if (shapeBorder === "yes"){
         shapeBorder = textColor;
     } else {
@@ -59,7 +69,13 @@ function writeToFile(answers){
     const fileName = `${text}.svg`;
 
     // Check shape type to render/writeFile for appropriate shape
-    if(shapeType === 'triangle'){
+    if(shapeType === 'circle'){
+        const circle = new Circle(text, textColor, textFont, shapeColor, shapeBorder);
+        return fs.writeFile(`./user-logo/${fileName}`, circle.render(), (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    } else if(shapeType === 'square'){
+        const square = new Square(text, textColor, textFont, shapeColor, shapeBorder);
+        return fs.writeFile(`./user-logo/${fileName}`, square.render(), (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
+    }  else if(shapeType === 'triangle'){
         const triangle = new Triangle(text, textColor, textFont, shapeColor, shapeBorder);
         return fs.writeFile(`./user-logo/${fileName}`, triangle.render(), (err) => err ? console.log(err) : console.log('Successfully generated logo.svg!'));
     }
@@ -72,7 +88,11 @@ function init(){
         if(answers.text.length > 3 || answers.text.length <= 0){
             console.log("Try again, text must have at least 1 character, but not be greater than 3 characters.");
             init();
-        } else {
+        } else if (answers.textColor.length == 0  || answers.shapeColor.length == 0){
+            console.log("whoops, try entering a different color.");
+            init();
+        }
+        else {
             writeToFile(answers);
         }
     });
