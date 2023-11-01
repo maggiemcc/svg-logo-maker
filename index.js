@@ -85,10 +85,13 @@ function writeToFile(answers){
 function init(){
     inquirer.prompt(questions)
     .then((answers) => {
+        // check shape text length
         if(answers.text.length > 3 || answers.text.length <= 0){
             console.log("Try again, text must have at least 1 character, but not be greater than 3 characters.");
             init();
-        } else if (answers.textColor.length == 0  || answers.shapeColor.length == 0){
+        } 
+        // check for shape and text color length
+        else if (answers.textColor.length == 0  || answers.shapeColor.length == 0){
             console.log("whoops, try entering a different color.");
             init();
         }
