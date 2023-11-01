@@ -15,6 +15,9 @@
 
 Users will be able to generate a simple logo for their projects so that they won't have to pay a graphic designer.
 
+## License
+MIT License
+
 ## Installation
 
 List specific steps to help remove ambiguity and get people to use your project as quickly as possible. Let people know if it only runs in a specific context like a particular programming language version or operating system or has dependencies that have to be installed manually.  
