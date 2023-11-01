@@ -62,12 +62,12 @@ node index.js
 
 ```
 What shape would you like to use?
-    - square
     - circle
+    - square
     - triangle
 ```
 
-3.  Once all questions are answered, you will be able to find your newly created svg logo under the folder name of "examples".
+3.  Once all questions are answered, you will be able to find your newly created svg logo under the folder name of "user-logo".
 
 ## Contributors
 
@@ -90,7 +90,7 @@ git push origin feature/featureName
 
 ## WalkThrough Video & Screenshot
 Click the image below to watch a walkthrough:  
-[![Watch my How to Video](./screenshot.png)]()
+[![Watch my How to Video](./screenshot.png)](https://drive.google.com/file/d/1_9jPCykYz9VMN-SiLcbzW28iGXPg-r-b/view)
 
 ## Contact
 
